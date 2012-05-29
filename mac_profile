@@ -36,6 +36,7 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 
+
 ####### set CLICOLORS
 
 export CLICOLOR=1
