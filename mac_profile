@@ -36,6 +36,8 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 
+alias ls="ls -o"
+
 
 ####### set CLICOLORS
 
