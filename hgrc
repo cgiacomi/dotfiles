@@ -1,0 +1,19 @@
+[ui]
+username=Name Lastname <emai@domain.com>
+ignore=~/.hgignore_global
+
+[extensions]
+hgext.collapse = ~/sources/mercurial/hgcollapse/hgext/collapse.py
+convert =
+extdiff =
+hgext.purge=
+mq=
+rebase=
+onsub=~/.hgext/onsub/onsub.py
+
+[extdiff]
+cmd.kdiff3 = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+ssh = ssh -C
+
+[merge-tools]
+kdiff3.args = $base $local $other -o $output
