@@ -36,7 +36,7 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 
-alias ls="ls -o"
+alias ls="ls -a -o"
 
 
 ####### set CLICOLORS
@@ -58,6 +58,11 @@ PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtblu\]$ \[$txtrst\]"
 ######## set RVM path
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+########
+
+export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 
 
