@@ -9,6 +9,7 @@ extdiff =
 hgext.purge=
 mq=
 rebase=
+graphlog =
 onsub=~/.hgext/onsub/onsub.py
 
 [extdiff]
@@ -17,3 +18,7 @@ ssh = ssh -C
 
 [merge-tools]
 kdiff3.args = $base $local $other -o $output
+
+[alias]
+lg = log -G --template "{rev} - {node|short} : {desc|fill76|tabindent|tabindent|tabindent} ({date|age}) <{author|user}>\n" --limit 10
+
