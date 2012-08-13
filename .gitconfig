@@ -3,3 +3,6 @@
         email = email@domain.com
 [alias]
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --
+
+[alias]
+        serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
