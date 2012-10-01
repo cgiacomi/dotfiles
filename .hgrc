@@ -4,6 +4,7 @@ ignore=~/.hgignore_global
 
 [extensions]
 hgext.collapse = ~/sources/mercurial/hgcollapse/hgext/collapse.py
+hgext.squash = ~/sources/git/squash/hgext/squash.py
 convert =
 extdiff =
 hgext.purge=
@@ -21,4 +22,3 @@ kdiff3.args = $base $local $other -o $output
 
 [alias]
 lg = log -G --template "{rev} - {node|short} : {desc|fill76|tabindent|tabindent|tabindent} ({date|age}) <{author|user}>\n" --limit 10
-
