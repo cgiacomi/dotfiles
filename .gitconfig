@@ -1,21 +1,21 @@
 [user]
         name = cgiacomi
-        email = email@domain.com
+        email = christiangiacomi@gmail.com 
 
-[difftool "kdiff3"]
-    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-    trustExitCode = false
-[difftool]
-    prompt = false
-[diff]
-    tool = kdiff3
-[mergetool "kdiff3"]
-    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-    trustExitCode = false
-[mergetool]
-    keepBackup = false
-[merge]
-    tool = kdiff3
+#[difftool "kdiff3"]
+#    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+#    trustExitCode = false
+#[difftool]
+#    prompt = false
+#[diff]
+#    tool = kdiff3
+#[mergetool "kdiff3"]
+#    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+#    trustExitCode = false
+#[mergetool]
+#    keepBackup = false
+#[merge]
+#    tool = kdiff3
 
 
 [alias]

@@ -39,6 +39,7 @@ txtrst='\e[0m'    # Text Reset
 ###### aliases
 
 alias ls="ls -a -o"
+source .aliases
 
 
 ####### set CLICOLORS
@@ -62,7 +63,6 @@ PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtblu\]$ \[$txtrst\]"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 
-
 ######## set autoconf
 
 PATH=$rvm_path/bin:$PATH
@@ -78,6 +78,12 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 rvm use ruby-1.9.3-p194
 
 
+######## PostgreSQL
+
+export PATH="/usr/local/bin:$PATH"
 
 
+####### Brew Path
+
+export PATH=/usr/local/sbin:$PATH
 
