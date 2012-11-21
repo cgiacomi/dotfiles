@@ -39,7 +39,9 @@ txtrst='\e[0m'    # Text Reset
 ###### aliases
 
 alias ls="ls -a -o"
-source .aliases
+source ~/.aliases
+
+alias slime='open -a "Sublime Text 2"'
 
 
 ####### set CLICOLORS
@@ -86,4 +88,5 @@ export PATH="/usr/local/bin:$PATH"
 ####### Brew Path
 
 export PATH=/usr/local/sbin:$PATH
+
 
