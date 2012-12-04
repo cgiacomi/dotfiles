@@ -77,7 +77,7 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 ######## set ruby version
 
-rvm use ruby-1.9.3-p194
+rvm use ruby-1.9.3-p327
 
 
 ######## PostgreSQL
