@@ -90,3 +90,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH=/usr/local/sbin:$PATH
 
 
+####### GIT 1.8.0.1
+
+export PATH=/usr/local/git/bin:$PATH
+
+
