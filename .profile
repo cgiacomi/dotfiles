@@ -77,7 +77,7 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 ######## set ruby version
 
-rvm use ruby-1.9.3-p327
+rvm use ruby-1.9.3-p374
 
 
 ######## PostgreSQL
@@ -94,4 +94,8 @@ export PATH=/usr/local/sbin:$PATH
 
 export PATH=/usr/local/git/bin:$PATH
 
+
+####### Heroku Client
+
+export PATH=~/sources/git/heroku-client/bin:$PATH
 

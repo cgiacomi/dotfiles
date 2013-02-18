@@ -1,21 +1,21 @@
 [user]
-        name = cgiacomi
-        email = christiangiacomi@gmail.com 
+    name = cgia
+    email = cgia@dr.dk
 
-#[difftool "kdiff3"]
-#    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-#    trustExitCode = false
-#[difftool]
-#    prompt = false
-#[diff]
-#    tool = kdiff3
-#[mergetool "kdiff3"]
-#    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-#    trustExitCode = false
-#[mergetool]
-#    keepBackup = false
-#[merge]
-#    tool = kdiff3
+[difftool "kdiff3"]
+    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+    trustExitCode = false
+[difftool]
+    prompt = false
+[diff]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+    trustExitCode = false
+[mergetool]
+    keepBackup = false
+[merge]
+    tool = kdiff3
 
 
 [alias]
@@ -23,3 +23,15 @@
 
 [alias]
         serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+[alias]
+        kdiff = difftool --dir-diff
+
+
+[core]
+	autocrlf = input
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
