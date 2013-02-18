@@ -95,3 +95,7 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/git/bin:$PATH
 
 
+####### Heroku Client
+
+export PATH=~/sources/git/heroku-client/bin:$PATH
+
