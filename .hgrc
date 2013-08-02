@@ -1,5 +1,5 @@
 [ui]
-username= cgiacomi <christiangiacomi@gmail.com>
+username= [name] <[email]>
 ignore=~/.hgignore_global
 
 [extensions]
