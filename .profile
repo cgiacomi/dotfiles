@@ -43,6 +43,8 @@ source ~/.aliases
 
 alias slime='open -a "Sublime Text 2"'
 
+## python3
+#alias python="python3"
 
 ####### set CLICOLORS
 
@@ -52,8 +54,8 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 
 ######## set the prompt
 
-PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtblu\]$ \[$txtrst\]"
-
+PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtred\]\$(vcprompt)\[$txtblu\]$\[$txtrst\] "
+export PS1
 
 ######## RVM
 
@@ -77,7 +79,7 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 ######## set ruby version
 
-rvm use ruby-1.9.3-p374
+rvm use ruby-2.0.0-p247
 
 
 ######## PostgreSQL
@@ -97,5 +99,13 @@ export PATH=/usr/local/git/bin:$PATH
 
 ####### Heroku Client
 
-export PATH=~/sources/git/heroku-client/bin:$PATH
+#export PATH=~/sources/git/heroku-client/bin:$PATH
 
+
+####### Local Bin
+
+export PATH=~/.bin:$PATH
+
+#heroku
+
+export PATH="/usr/local/heroku/bin:$PATH"
