@@ -1,6 +1,6 @@
 [user]
-    name = cgia
-    email = cgia@dr.dk
+    name = 
+    email = 
 
 [difftool "kdiff3"]
     path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
