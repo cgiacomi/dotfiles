@@ -1,4 +1,3 @@
-
 ######## colors
 
 txtblk='\e[0;30m' # Black - Regular
@@ -38,13 +37,11 @@ txtrst='\e[0m'    # Text Reset
 
 ###### aliases
 
-alias ls="ls -a -o"
-source ~/.aliases
+alias ll="ls -a -o"
 
 alias slime='open -a "Sublime Text 2"'
 
-## python3
-#alias python="python3"
+
 
 ####### set CLICOLORS
 
@@ -52,24 +49,24 @@ export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
 
 
+
 ######## set the prompt
 
 PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtred\]\$(vcprompt)\[$txtblu\]$\[$txtrst\] "
 export PS1
 
-######## RVM
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
-######## set RVM path
+######## BIN
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=~/.bin:$PATH
 
 
-######## set autoconf
 
-PATH=$rvm_path/bin:$PATH
+######## NODEJS
+
+export PATH=/usr/local/bin:$PATH
+
 
 
 ######## kdiff3
@@ -77,35 +74,5 @@ PATH=$rvm_path/bin:$PATH
 export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 
-######## set ruby version
-
-rvm use ruby-2.0.0-p247
 
 
-######## PostgreSQL
-
-export PATH="/usr/local/bin:$PATH"
-
-
-####### Brew Path
-
-export PATH=/usr/local/sbin:$PATH
-
-
-####### GIT 1.8.0.1
-
-export PATH=/usr/local/git/bin:$PATH
-
-
-####### Heroku Client
-
-#export PATH=~/sources/git/heroku-client/bin:$PATH
-
-
-####### Local Bin
-
-export PATH=~/.bin:$PATH
-
-#heroku
-
-export PATH="/usr/local/heroku/bin:$PATH"

@@ -1,6 +1,6 @@
 [user]
-    name = 
-    email = 
+    name = cgia
+    email = cgia@dr.dk
 
 [difftool "kdiff3"]
     path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
@@ -19,9 +19,9 @@
 
 
 [alias]
-        kdiff = difftool --dir-diff
+    kdiff = difftool --dir-diff
 [alias]
-        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --
 
 [alias]
-        serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+    serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
