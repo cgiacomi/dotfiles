@@ -75,4 +75,10 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 
 
+######## MONGODB
+
+export PATH=/Applications/mongodb/bin:$PATH
+
+
+
 
