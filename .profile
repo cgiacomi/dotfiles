@@ -39,20 +39,23 @@ txtrst='\e[0m'    # Text Reset
 
 alias ll="ls -a -o"
 
-alias slime='open -a "Sublime Text 2"'
-
 
 
 ####### set CLICOLORS
 
 export CLICOLOR=1
-export LSCOLORS=exfxcxdxbxegedabagacad
+export LSCOLORS=Exfxcxdxbxegedabagacad
 
 
 
 ######## set the prompt
 
-PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtred\]\$(vcprompt)\[$txtblu\]$\[$txtrst\] "
+## primary single line
+#PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtred\]\$(vcprompt)\[$txtblu\]$\[$txtrst\] "
+
+## alternate multiline
+PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w \[$txtred\]\$(vcprompt)\n\[$txtblu\]❱\[$txtrst\] "
+
 export PS1
 
 
@@ -75,10 +78,24 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 
 
-######## MONGODB
+######## GO LANG
 
-export PATH=/Applications/mongodb/bin:$PATH
+export GOPATH=$HOME/sources/go-workspace
+export GOBIN=$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOROOT/bin
 
 
 
+####### BREW BASH AUTOCOMPLETE
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
+# Setting PATH for Python 3.6
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+export PATH="/usr/local/sbin:$PATH"
