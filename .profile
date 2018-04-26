@@ -35,6 +35,58 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 
+prompt_git() {
+  local s='';
+  local branchName='';
+
+  # Check if the current directory is in a Git repository.
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+
+    # check if the current directory is in .git before running git checks
+    if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+      # Ensure the index is up to date.
+      git update-index --really-refresh -q &>/dev/null;
+
+      # Check for uncommitted changes in the index.
+      if ! $(git diff --quiet --ignore-submodules --cached); then
+        s+='+';
+      fi;
+
+      # Check for unstaged changes.
+      if ! $(git diff-files --quiet --ignore-submodules --); then
+        s+='!';
+      fi;
+
+      # Check for untracked files.
+      if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+        s+='?';
+      fi;
+
+      # Check for stashed files.
+      if $(git rev-parse --verify refs/stash &>/dev/null); then
+        s+='$';
+      fi;
+
+    fi;
+
+    # Get the short symbolic ref.
+    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+    # Otherwise, just give up.
+    branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+      git rev-parse --short HEAD 2> /dev/null || \
+      echo '(unknown)')";
+
+    [ -n "${s}" ] && s=" [${s}]";
+
+    echo -e "${1}${branchName}${2}${s}";
+  else
+    return;
+  fi;
+}
+
+
+
 ###### aliases
 
 alias ll="ls -a -o"
@@ -54,9 +106,17 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 #PS1="\[$txtpur\]\h\[$txtgrn\]: \[$txtylw\]\w \[$txtred\]\$(vcprompt)\[$txtblu\]$\[$txtrst\] "
 
 ## alternate multiline
-PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w \[$txtred\]\$(vcprompt)\n\[$txtblu\]❱\[$txtrst\] "
-
+#PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w \[$txtred\]\$(vcprompt)\n\[$txtblu\]❱\[$txtrst\] "
+PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w"
+PS1+="\$(prompt_git \"\[$txtwht\] on \[$txtpur\]\" \"\[$txtcyn\]\")"; # Git repository details
+PS1+="\n\[$txtblu\]❱\[$txtrst\] "
 export PS1
+
+
+
+######## Local
+
+export PATH=~/.local/bin:$PATH
 
 
 
@@ -88,14 +148,29 @@ export PATH=$PATH:$GOROOT/bin
 
 
 
-####### BREW BASH AUTOCOMPLETE
+######## COMPOSER GLOBAL BIN
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
+export PATH=~/.composer/vendor/bin:$PATH
 
+
+####### PYTHON 3.6
 # Setting PATH for Python 3.6
 # The original version is saved in .profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 export PATH="/usr/local/sbin:$PATH"
+
+
+
+####### NVM VERSION
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+
+####### RVM VERSION
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
