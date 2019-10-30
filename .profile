@@ -86,10 +86,23 @@ prompt_git() {
 }
 
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 
 ###### aliases
 
 alias ll="ls -a -o"
+
+
+###### SWIFT alias
+
+alias swift="PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH swift"
+
+
+###### Python alias
+
+alias python='python3'
 
 
 
@@ -107,6 +120,7 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 
 ## alternate multiline
 #PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w \[$txtred\]\$(vcprompt)\n\[$txtblu\]❱\[$txtrst\] "
+
 PS1="\n\[$txtpur\]\u\[$txtrst\]:\[$txtylw\]\w"
 PS1+="\$(prompt_git \"\[$txtwht\] on \[$txtpur\]\" \"\[$txtcyn\]\")"; # Git repository details
 PS1+="\n\[$txtblu\]❱\[$txtrst\] "
@@ -140,7 +154,7 @@ export PATH=/Applications/kdiff3.app/Contents/MacOS:$PATH
 
 ######## GO LANG
 
-export GOPATH=$HOME/sources/go-workspace
+export GOPATH=$HOME/code/go-workspace
 export GOBIN=$GOPATH/bin
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOBIN
@@ -148,17 +162,33 @@ export PATH=$PATH:$GOROOT/bin
 
 
 
-######## COMPOSER GLOBAL BIN
+######## GITUB TOKEN
 
-export PATH=~/.composer/vendor/bin:$PATH
+export GITHUB_TOKEN=xxx
 
 
-####### PYTHON 3.6
-# Setting PATH for Python 3.6
-# The original version is saved in .profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
-export PATH="/usr/local/sbin:$PATH"
+
+######## TERRAFORM
+
+export TF_VAR_digitalocean_token=xxx
+export TF_VAR_ssh_fingerprint=xxx
+
+
+
+####### BREW BASH AUTOCOMPLETE
+
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#. $(brew --prefix)/etc/bash_completion
+#fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+
+
+####### BREW PHP-VERSION
+#source $(brew --prefix php-version)/php-version.sh && php-version 7.1.14
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+export PATH="~/.composer/vendor/bin:$PATH"
 
 
 
@@ -174,3 +204,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+
+
+# Setting PATH for Python 3.7
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+export PATH
