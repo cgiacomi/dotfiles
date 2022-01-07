@@ -108,5 +108,9 @@ source $ZSH/oh-my-zsh.sh
 
 # DEFAULT_USER=cgia
 
+#source aliases and paths
+source .zsh_aliases
+source .zsh_paths
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
