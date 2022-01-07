@@ -1,13 +1,25 @@
 # install packages
-tap 'homebrew/cask' || true
-brew 'git'
-brew 'tree'
-brew 'wget'
-brew 'gh'
-brew 'k9s'
-brew 'gnupg'
-brew 'neovim'
-brew 'pyenv'
-brew 'mercurial'
-brew 'paperkey'
-brew 'go'
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+brew "ctags"
+brew "gh"
+brew "git"
+brew "gnupg"
+brew "go"
+brew "golang-migrate"
+brew "k9s"
+brew "kubernetes-cli", link: false
+brew "mercurial"
+brew "neovim"
+brew "openssl@3"
+brew "paperkey"
+brew "protobuf"
+brew "pyenv"
+brew "qrencode"
+brew "terraform"
+brew "tree"
+brew "wget"
+brew "zstd"
+cask "font-fira-code"

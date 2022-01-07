@@ -54,6 +54,8 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 
+# TODO: install powerlevel fonts!
+
 
 # POWERLEVEL10K Theme
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
