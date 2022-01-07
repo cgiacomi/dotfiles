@@ -2,6 +2,9 @@
     name =
     email =
 
+[commit]
+	gpgsign = true
+
 [difftool "kdiff3"]
     path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
     trustExitCode = false
