@@ -3,8 +3,8 @@
 set -e
 
 # Ask for the sudo permission upfront and keep valid until EOF
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# sudo -v
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
@@ -26,8 +26,8 @@ if ! command -v brew >/dev/null; then
   export PATH="/opt/homebrew/bin:$PATH"
 fi
 
-if ! brew bundle check --file="$script_path/bin/Brewfile" >/dev/null; then
-  brew bundle install --file="$script_path/bin/Brewfile" --force --no-lock
+if ! brew bundle check --file="$script_path/homebrew/Brewfile" >/dev/null; then
+  brew bundle install --file="$script_path/homebrew/Brewfile" --force --no-lock
 fi
 
 
@@ -35,24 +35,38 @@ fi
 # NVM
 if ! command -v nvm >/dev/null; then
   curl -o- 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh' | bash
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
 
 
 # GO GVM
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+if [ ! -d "$HOME/.gvm" ]; then
+  bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+fi
+
 
 
 # OH MY ZSH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+
+
+# POWERLEVEL10K Theme
+if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
 
 
 # Move needed files
-ln -s git/.gitconfig $HOME/.gitconfig
-ln -s git/.gitignore_global $HOME/.gitignore_global
+ln -fs $script_path/git/.gitconfig $HOME/.gitconfig
+ln -fs $script_path/git/.gitignore_global $HOME/.gitignore_global
 
-ln -s zsh/.zsh $HOME/.zsh
-ln -s zsh/.p10k.zsh $HOME/.p10k.zsh
-ln -s zsh/.zsh_aliases $HOME/.zsh_aliases
-ln -s zsh/.zsh_paths $HOME/.zsh_paths
+ln -fs $script_path/zsh/.p10k.zsh $HOME/.p10k.zsh
+ln -fs $script_path/zsh/.zsh_aliases $HOME/.zsh_aliases
+ln -fs $script_path/zsh/.zsh_paths $HOME/.zsh_paths
+ln -fs $script_path/zsh/.zshrc $HOME/.zshrc
 

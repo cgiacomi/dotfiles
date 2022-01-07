@@ -1,5 +1,5 @@
 # install packages
-tap 'caskroom/homebrew-cask' || true
+tap 'homebrew/cask' || true
 brew 'git'
 brew 'tree'
 brew 'wget'

@@ -35,5 +35,5 @@ PATH=$(pyenv root)/shims:$PATH
 
 
 ###### ZSH
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
+source "$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
