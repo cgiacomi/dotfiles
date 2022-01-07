@@ -57,6 +57,7 @@ pickle-email-*.html
 **.orig
 
 # Mac finder artifacts
+*~
 .DS_Store
 
 # Netbeans project directory

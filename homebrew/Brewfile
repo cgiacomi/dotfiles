@@ -1,0 +1,13 @@
+# install packages
+tap 'caskroom/homebrew-cask' || true
+brew 'git'
+brew 'tree'
+brew 'wget'
+brew 'gh'
+brew 'k9s'
+brew 'gnupg'
+brew 'neovim'
+brew 'pyenv'
+brew 'mercurial'
+brew 'paperkey'
+brew 'go'
