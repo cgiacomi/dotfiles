@@ -3,7 +3,7 @@
 set -e
 
 # Ask for the sudo permission upfront and keep valid until EOF
-# sudo -v
+sudo -v
 # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -33,7 +33,7 @@ fi
 
 
 # NVM
-if ! command -v nvm >/dev/null; then
+if [ ! -d "$HOME/.nvm" ]; # if ! command -v nvm >/dev/null; then
   curl -o- 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh' | bash
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -54,13 +54,17 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 
-# TODO: install powerlevel fonts!
+
+# Copy all the fonts
+cp -rv ./fonts $HOME/Library/Fonts
+
 
 
 # POWERLEVEL10K Theme
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
+
 
 
 # Move needed files
@@ -72,3 +76,19 @@ ln -fs $script_path/zsh/.zsh_aliases $HOME/.zsh_aliases
 ln -fs $script_path/zsh/.zsh_paths $HOME/.zsh_paths
 ln -fs $script_path/zsh/.zshrc $HOME/.zshrc
 
+
+
+# Use touchID for sudo permission
+cat /etc/pam.d/sudo | grep "pam_tid.so" || sudo gsed -i '3 i auth       sufficient     pam_tid.so' /etc/pam.d/sudo
+
+
+
+# Reload all the configurations
+source $HOME/.zshrc
+
+
+
+# Install default version for Go, Node and Python
+gvm install go1.17.6
+nvm install v16.13.1
+pyenv install 3.10.0

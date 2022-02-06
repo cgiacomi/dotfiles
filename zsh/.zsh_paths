@@ -1,6 +1,13 @@
 
+
+
 ####### GPG
 export GPG_TTY=$(tty)
+
+
+
+###### ZSH
+source "$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
 
 
@@ -12,13 +19,9 @@ export GPG_TTY=$(tty)
 # export PATH=$PATH:$GOROOT/bin
 
 
+
 ####### GO GVM
 source "$HOME/.gvm/scripts/gvm"
-
-
-
-####### K8s
-export KUBECONFIG="$(ls -d ${HOME}/.kube/contexts/* | paste -sd ':' -)"
 
 
 
@@ -34,6 +37,7 @@ PATH=$(pyenv root)/shims:$PATH
 
 
 
-###### ZSH
-source "$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
+####### K8s
+export KUBECONFIG="$(ls -d ${HOME}/.kube/contexts/* | paste -sd ':' -)"
+
 
