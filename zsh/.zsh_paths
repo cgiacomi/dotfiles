@@ -26,8 +26,8 @@ source "$HOME/.gvm/scripts/gvm"
 
 
 ####### NODE NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 
@@ -38,6 +38,24 @@ PATH=$(pyenv root)/shims:$PATH
 
 
 ####### K8s
-export KUBECONFIG="$(ls -d ${HOME}/.kube/contexts/* | paste -sd ':' -)"
+# export KUBECONFIG="$(ls -d ${HOME}/.kube/contexts/* | paste -sd ':' -)"
+
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"
+
+
+
+###### OPENJDK
+#export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+
+
+###### DIRENV
+#eval "$(direnv hook zsh)"
+
+
+
 
 

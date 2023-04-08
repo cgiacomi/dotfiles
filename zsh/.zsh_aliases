@@ -1,10 +1,10 @@
-
-
 ###### aliases
-alias ll="ls -a -o"
+# alias ll="ls -a -o"
+alias ll="exa -al"
+alias l="ll"
+
+#alias lvim="/Users/chris/.local/bin/lvim"
 
 
 ###### SWIFT alias
 alias swift="PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH swift"
-
-

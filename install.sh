@@ -12,17 +12,17 @@ script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # XCODE command line tools
 if ! type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
-   test -d "${xpath}" && test -x "${xpath}"; then
-   echo "Command line tools not installed. Install and run script again."
-   xcode-select --install
-   EXIT
+  test -d "${xpath}" && test -x "${xpath}"; then
+  echo "Command line tools not installed. Install and run script again."
+  xcode-select --install
+  EXIT
 fi
 
 
 
 # BREW
 if ! command -v brew >/dev/null; then
-  curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh' | ruby
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   export PATH="/opt/homebrew/bin:$PATH"
 fi
 
@@ -33,11 +33,22 @@ fi
 
 
 # NVM
-if [ ! -d "$HOME/.nvm" ]; # if ! command -v nvm >/dev/null; then
-  curl -o- 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh' | bash
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ ! -d "$HOME/.nvm" ]; then # if ! command -v nvm >/dev/null; then
+ curl -o- 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh' | bash
+ export NVM_DIR="$HOME/.nvm"
+ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
+
+
+
+# RVM
+#if [ ! -d "$HOME/.rvm" ]; # if ! command -v nvm >/dev/null; then
+#  gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 #7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+#  curl -sSL https://get.rvm.io | bash -s stable --ruby
+#
+#  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#  export PATH="$PATH:$HOME/.rvm/bin"
+#fi
 
 
 
@@ -48,11 +59,16 @@ fi
 
 
 
-# OH MY ZSH
+#OH MY ZSH
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+
+# Fisher for Fish Shell
+# curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+# fisher install JGAntunes/fish-gvm
+# fisher install edc/bass
 
 
 # Copy all the fonts
@@ -87,8 +103,12 @@ cat /etc/pam.d/sudo | grep "pam_tid.so" || sudo gsed -i '3 i auth       sufficie
 source $HOME/.zshrc
 
 
+# LunarVim
+#bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+
+
 
 # Install default version for Go, Node and Python
-gvm install go1.17.6
-nvm install v16.13.1
-pyenv install 3.10.0
+# gvm install go1.17.6
+# nvm install v16.13.1
+# pyenv install 3.10.0
